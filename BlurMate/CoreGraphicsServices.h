@@ -20,4 +20,8 @@ extern CGError CGSSetWindowBackgroundBlurRadius(
                         CGSConnectionID cid, CGSWindowID wid, NSUInteger blur)
                         __attribute__((weak_import));
 
+extern CGError CGSSetWindowBackgroundBlurRadiusStyle(
+                        CGSConnectionID cid, CGSWindowID wid, NSUInteger blur)
+                        __attribute__((weak_import));
+
 #endif

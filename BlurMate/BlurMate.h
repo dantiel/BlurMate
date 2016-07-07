@@ -17,4 +17,5 @@
 @interface BlurMate : NSObject
 - (id)initWithPlugInController:(id <TMPlugInController>)controller;
 - (void)enableBlurForWindow:(NSWindow *)window radius:(double)radius;
+- (void)insertVibrancyViewForView:(NSView *)view appearance:(NSAppearance *)appearance material:(NSVisualEffectMaterial *)material;
 @end
