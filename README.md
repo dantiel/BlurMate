@@ -1,10 +1,10 @@
-# BlurMate = TM2 + Alpha &rarr; Blur
+# BlurMate = TM2 + Alpha &rarr; Vibrance
 
-![BlurMate](https://f.cloud.github.com/assets/4581/2430127/de1b7166-acba-11e3-9530-ea3527ad07ac.png)
+![BlurMate](screenshot.png)
 
-A very quick and dirty TextMate 2 plugin that simply blurs the window background.  Useful if you have a theme with a transparent background, where otherwise it can make things pretty unreadable sometimes.
+A very quick and dirty TextMate 2 plugin that simply blurs the window background using the new vibrance modes. Useful if you have a theme with a transparent background, where otherwise it can make things pretty unreadable sometimes. I recommend editing the theme you wish use and set a _very_ transparent background as the effect wont be visible otherwise.
 
-Inspired by BlurMate for TM1, for which the source code was never released.  I hijacked the name because, well, because.
+Forked from [BlurMate](https://github.com/cliffrowley/blurmate) for TM2, which was inspired by BlurMate for TM1, for which the source code was never released.  I hijacked the name because, well, because.
 
 ## Installing
 
@@ -12,9 +12,9 @@ Simply grab the latest release and drop it in `~/Library/Application Support/Tex
 
 ## Configuring
 
-The default blur radius is 20.  I think it's pixels, but it could be hamsters for all I know.  You can change it to whatever you like using `defaults` like this:
+The default is vibrance mode is `dark`. Some of the modes I quickly implemented are more useful than others. You can change it using `defaults` like this:
 
-`defaults write com.macromates.TextMate.preview BlurMateRadius <value>`
+`defaults write com.macromates.TextMate.preview BlurMateVibrance <ultra-dark|dark|medium-dark|medium|medium-light|light>`
 
 ## Uninstalling
 
