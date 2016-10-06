@@ -19,7 +19,7 @@
 
 - (id)initWithPlugInController:(id <TMPlugInController>)controller {
     NSApp = [NSApplication sharedApplication];
-
+    
     if ((self = [self init])) {
         DebugLog(@"LOADED BLURMATE!");
         
@@ -33,7 +33,7 @@
                                                            queue:[NSOperationQueue mainQueue]
                                                       usingBlock:^(NSNotification *note) {
                                                           NSWindow *window = note.object;
-
+                                                          
                                                           if (!!window) {
                                                               
                                                               NSView *view = window.contentView;
@@ -53,7 +53,7 @@
                                                                           material = NSVisualEffectMaterialUltraDark;
                                                                       }
                                                                       else if ([vibrantObj isEqualToString:@"dark"]) {
-                                                                          // default, nothing to do
+                                                                          /* default, nothing to do*/
                                                                       }
                                                                       else if ([vibrantObj isEqualToString:@"medium-dark"]) {
                                                                           material = NSVisualEffectMaterialDark;
@@ -78,41 +78,56 @@
                                                               }
                                                               
                                                               /*
-                                                              double radius = 20; // the default
-                                                              NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                                                              NSNumber *blurRadiusObj = [defaults objectForKey:@"BlurMateRadius"];
-                                                              if (!!blurRadiusObj) {
-                                                                  radius = [blurRadiusObj doubleValue];
-                                                              }
-                                                              DebugLog(@"RADIUS: %f", radius);
-                                                              [self enableBlurForWindow:window radius:radius];
-                                                    */
+                                                               
+                                                               if [view isKindOfClass:NSClassFromString(@"OakTextView")].
+                                                               
+                                                               
+                                                               double radius = 20; // the default
+                                                               NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                                                               NSNumber *blurRadiusObj = [defaults objectForKey:@"BlurMateRadius"];
+                                                               if (!!blurRadiusObj) {
+                                                               radius = [blurRadiusObj doubleValue];
+                                                               }
+                                                               DebugLog(@"RADIUS: %f", radius);
+                                                               [self enableBlurForWindow:window radius:radius];
+                                                               */
                                                           }
                                                       }];
     }
-
+    
     return self;
+}
+
+
+- (Boolean)containsOakTextView:(NSView *)view {
+    if ([view isKindOfClass:NSClassFromString(@"OakTextView")])
+        return true;
+    for (NSView *subview in [view subviews])
+        if ([self containsOakTextView:subview]) return true; //recursive
+    return false;
 }
 
 - (void)insertVibrancyViewForView:(NSView *)view appearance:(NSAppearance *)appearance material:(NSVisualEffectMaterial *)material {
     Class vibrantClass = NSClassFromString(@"NSVisualEffectView");
     Boolean isAlreadyVibrant = [view.subviews.firstObject isKindOfClass:vibrantClass];
-    Boolean isEditorView = NULL == view.identifier;
+    Boolean isEditorView = [self containsOakTextView:view];
     
     if (vibrantClass && isEditorView && !isAlreadyVibrant) {
         DebugLog(@"Adding vibrancy for view: %@ %@", view.window.identifier, view.identifier);
+        
         NSVisualEffectView *vibrant = [[vibrantClass alloc] initWithFrame:view.bounds];
         view.window.titlebarAppearsTransparent = true;
         //visualEffectView.state = NSVisualEffectState.Active//FollowsWindowActiveState,Inactive
         
-        [vibrant setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-        [vibrant setAppearance:appearance];
-        [vibrant setMaterial:*material];
-        [vibrant setBlendingMode:NSVisualEffectBlendingModeBehindWindow];
-        [view addSubview:vibrant positioned:NSWindowBelow relativeTo:nil];
+        [vibrant setAutoresizingMask: NSViewWidthSizable | NSViewHeightSizable];
+        [vibrant setAppearance: appearance];
+        [vibrant setMaterial: *material];
+        [vibrant setBlendingMode: NSVisualEffectBlendingModeBehindWindow];
+        [view addSubview: vibrant positioned:NSWindowBelow relativeTo: nil];
     }
     else {
-        DebugLog(@"Not adding vibrancy to view: %@", view.identifier);
+        DebugLog(@"Not adding vibrancy to view: %@ %@", view.window.identifier, view.identifier);
+        DebugLog(@"description: %@", view.window.firstResponder.description);
     }
 }
 
