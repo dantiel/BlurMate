@@ -2,7 +2,7 @@
 
 ![BlurMate](https://github.com/dantiel/blurmate/raw/master/screenshot.png)
 
-A very quick and dirty TextMate 2 plugin that simply blurs the window background using the new vibrance modes. Useful if you have a theme with a transparent background, where otherwise it can make things pretty unreadable sometimes. I recommend editing the theme you wish use and set a _very_ transparent background as the effect wont be visible otherwise. See the [themes section](#Themes) as well.
+A very quick and dirty TextMate 2 plugin that simply blurs the window background using the new vibrance modes. Useful if you have a theme with a transparent background, where otherwise it can make things pretty unreadable sometimes. I recommend editing the theme you wish use and set a _very_ transparent background as the effect wont be visible otherwise. See the [themes section](#themes) as well.
 
 Forked from [BlurMate](https://github.com/cliffrowley/blurmate) for TM2, which was inspired by BlurMate for TM1, for which the source code was never released.  I hijacked the name because, well, because nothing’s without a cause.
 
