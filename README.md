@@ -14,7 +14,7 @@ Simply grab the latest release and drop it in `~/Library/Application Support/Tex
 
 The default vibrance mode is `dark`. Some of the modes I quickly implemented are more useful than others. You can change it using `defaults` like this:
 
-`defaults write com.macromates.TextMate.preview BlurMateVibrance <ultra-dark|dark|medium-dark|medium|medium-light|light>`
+`defaults write com.macromates.TextMate BlurMateVibrance <ultra-dark|dark|medium-dark|medium|medium-light|light>`
 
 ## Themes
 
